@@ -43,8 +43,7 @@ namespace ADO_Practice_1
                 dataGridView1.DataSource = dataSetCategory.Tables[0];
                 adapterGoods = new SqlDataAdapter("select * from Goods", connection.ConnectionString);
                 adapterGoods.Fill(dataSetGoods);
-                dataGridView2.DataSource = dataSetGoods.Tables[0];
-                ts_status.Text = "Connection to bd success";
+                dataGridView2.DataSource = dataSetGoods.Tables[0];                
             }
             catch(Exception ex) 
             {
@@ -52,7 +51,28 @@ namespace ADO_Practice_1
             }
             finally 
             {
-                ts_status.Text = "Connection to bd close";
+                ts_status.Text = "All data read success";
+            }
+        }
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage1)
+            {
+                int lastid = 1;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    lastid = (int)dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value;
+                }
+                AddCategory ac = new AddCategory(lastid);
+                if (ac.ShowDialog() == DialogResult.OK)
+                {
+                    
+                }
+            }
+            else if (tabControl1.SelectedTab == tabPage2)
+            {
+                
             }
         }
     }
