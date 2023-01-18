@@ -60,15 +60,17 @@ namespace ADO_Practice_1
             if (tabControl1.SelectedTab == tabPage1)
             {
                 int lastid = 1;
-                if (dataGridView1.Rows.Count > 0)
+                if (dataSetCategory.Tables[0].Rows.Count > 0)
                 {
-                    lastid = (int)dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value;
+                    ts_status.Text = dataGridView1.Rows.Count.ToString();
+                    lastid = (int)dataSetCategory.Tables[0].Rows[dataSetCategory.Tables[0].Rows.Count - 1][0] + 1;
                 }
                 AddCategory ac = new AddCategory(lastid);
                 if (ac.ShowDialog() == DialogResult.OK)
                 {
-                    
+                    dataSetCategory.Tables[0].Rows.Add(Int32.Parse(ac.tb_id.Text), ac.tb_name.Text);                                     
                 }
+                ac.Dispose();
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {

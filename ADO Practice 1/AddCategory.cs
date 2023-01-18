@@ -11,10 +11,11 @@ using System.Windows.Forms;
 namespace ADO_Practice_1
 {
     public partial class AddCategory : Form
-    {        
+    {
+        int lastid;
         public AddCategory(int id)
         {
-            tb_id.Text = id.ToString();
+            lastid = id;
             InitializeComponent();
         }
 
@@ -29,6 +30,11 @@ namespace ADO_Practice_1
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void AddCategory_Load(object sender, EventArgs e)
+        {
+            tb_id.Text = lastid.ToString();
         }
     }
 }
