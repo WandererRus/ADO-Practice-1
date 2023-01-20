@@ -81,14 +81,10 @@ namespace ADO_Practice_1
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage1)
-            {
-                int lastid = 1;
-                if (dataSetCategory.Tables[0].Rows.Count > 0)
-                {
-                    ts_status.Text = dataGridView1.Rows.Count.ToString();
-                    lastid = (int)dataSetCategory.Tables[0].Rows[dataSetCategory.Tables[0].Rows.Count - 1][0] + 1;
-                }
-                
+            {               
+                DataRow editRow = dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index];
+                EditCategory ec = new EditCategory((int)editRow[0], (string)editRow[1]);
+                ec.ShowDialog();
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {
