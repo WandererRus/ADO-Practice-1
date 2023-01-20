@@ -83,8 +83,12 @@ namespace ADO_Practice_1
             if (tabControl1.SelectedTab == tabPage1)
             {               
                 DataRow editRow = dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index];
-                EditCategory ec = new EditCategory((int)editRow[0], (string)editRow[1]);
-                ec.ShowDialog();
+                EditCategory ec = new EditCategory((int)editRow[0], (string)editRow[1]);                
+                if (ec.ShowDialog() == DialogResult.OK)
+                {
+                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(0, Int32.Parse(ec.tb_id.Text));
+                    dataSetCategory.Tables[0].Rows[dataGridView1.SelectedRows[0].Index].SetField(1, ec.tb_name.Text);                    
+                }
             }
             else if (tabControl1.SelectedTab == tabPage2)
             {
