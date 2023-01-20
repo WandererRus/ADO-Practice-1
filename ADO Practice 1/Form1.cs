@@ -98,7 +98,15 @@ namespace ADO_Practice_1
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab == tabPage1)
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                    dataSetCategory.Tables[0].Rows.RemoveAt(dataGridView1.SelectedRows[0].Index); 
+            }
+            else if (tabControl1.SelectedTab == tabPage2)
+            {
 
+            }
         }
     }
 }
