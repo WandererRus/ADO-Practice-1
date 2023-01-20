@@ -77,5 +77,28 @@ namespace ADO_Practice_1
                 
             }
         }
+
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage1)
+            {
+                int lastid = 1;
+                if (dataSetCategory.Tables[0].Rows.Count > 0)
+                {
+                    ts_status.Text = dataGridView1.Rows.Count.ToString();
+                    lastid = (int)dataSetCategory.Tables[0].Rows[dataSetCategory.Tables[0].Rows.Count - 1][0] + 1;
+                }
+                
+            }
+            else if (tabControl1.SelectedTab == tabPage2)
+            {
+
+            }
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
